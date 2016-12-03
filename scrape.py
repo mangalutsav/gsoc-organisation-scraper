@@ -43,14 +43,14 @@ def scrape():
       if user_pref in tag.text:
         print "Name: "+org_name
         print "Link: "+org_link
-	print "No. of time: "+no_of_times_before_2016(org_name)+ '\n'
+	print "Years: "+no_of_times_before_2016(org_name)+ '\n'
         count += 1
 
   if count == 0:
     print "Enter a valid technology name."
 
 def no_of_times_before_2016(org_name):
-  count = 0
+  count = ""
   for i in range(2009,2016):
     year_url = prev_def_url + str(i)
     response = requests.get(year_url)
@@ -60,9 +60,9 @@ def no_of_times_before_2016(org_name):
     for org in orgs:
       name = org.find('a').text
       if org_name==name:
-        count += 1
+        count += str(i) + " "
         break
-  return str(count)
+  return count
 
 if __name__=="__main__":
   scrape()
