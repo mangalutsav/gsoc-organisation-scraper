@@ -42,7 +42,8 @@ def scrape():
     for tag in tags:
       if user_pref in tag.text:
         print "Name: "+org_name
-        print "Link: "+org_link + '\n'
+        print "Link: "+org_link
+	print "No. of time: "+no_of_times_before_2016(org_name)+ '\n'
         count += 1
 
   if count == 0:
@@ -61,7 +62,7 @@ def no_of_times_before_2016(org_name):
       if org_name==name:
         count += 1
         break
-  return count
+  return str(count)
 
 if __name__=="__main__":
   scrape()
